@@ -13,6 +13,9 @@ class EventsService(
     private val eventsRepository: EventsRepository,
     @Qualifier("eventsMapperImpl") private val mapper: EventsMapper
 ) {
+    fun getAll(): List<Events> = eventsRepository.findAll()
+    fun getById(id: Long) = eventsRepository.findById(id)
+
     @Transactional
     fun create(data: CreateEventDto) {
         eventsRepository.save<Events>(mapper.dtoToEvent(data))

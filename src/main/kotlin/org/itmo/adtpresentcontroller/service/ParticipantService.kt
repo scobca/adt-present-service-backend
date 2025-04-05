@@ -16,6 +16,7 @@ class ParticipantService(
     private val eventsRepo: EventsRepository,
     @Qualifier("participantMapperImpl") private val mapper: ParticipantMapper
 ) {
+    fun getAll(): List<Participant> = participantRepo.findAll()
     fun findById(id: Long): Participant = participantRepo.findById(id).orElse(null)
 
     @Transactional
