@@ -1,0 +1,36 @@
+name: esc-notes
+volumes:
+  postgres_data:
+networks:
+  internal:
+    name: internal
+  exposed:
+    name: exposed
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - internal
+  esc-notes:
+    container_name: esc-notes
+    #    build:
+    #      context: .
+    #      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    image: scobca/esc-notes
+    ports:
+      - "8080:8080"
+    volumes:
+      - .env:/app/.env
+    networks:
+      - internal
