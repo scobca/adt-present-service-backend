@@ -1,10 +1,10 @@
 package org.itmo.adtpresentcontroller.dto.events
 
-import java.sql.Timestamp
+import java.time.LocalDateTime
 
 data class CreateEventDto(
     val name: String,
-    val data: Timestamp,
+    val data: LocalDateTime,
     val description: String,
     val classroom: Long
 )

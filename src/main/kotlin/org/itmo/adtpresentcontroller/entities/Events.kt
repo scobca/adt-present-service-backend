@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "events")
@@ -19,4 +20,10 @@ class Events {
 
     @Column(nullable = false)
     var description: String = ""
+
+    @Column(nullable = false)
+    var data: LocalDateTime? = null
+
+    @Column(nullable = false)
+    var classroom: Long = 0
 }
