@@ -30,5 +30,5 @@ class Participant {
 
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
-    var user: Events? = null
+    var event: Events? = null
 }
