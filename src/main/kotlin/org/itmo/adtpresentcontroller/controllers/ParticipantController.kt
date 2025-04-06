@@ -25,6 +25,11 @@ class ParticipantController(private val participantService: ParticipantService) 
     @Transactional
     fun createParticipant(@RequestBody data: CreateParticipantDto) = participantService.createParticipant(data)
 
+    @PostMapping("/createPull")
+    @Transactional
+    fun createPullOfParticipants(@RequestBody data: List<CreateParticipantDto>) =
+        participantService.createPullOfParticipants(data)
+
     @PatchMapping("/update")
     @Transactional
     fun updateParticipant(@RequestBody data: UpdateParticipantDto) = participantService.updateParticipant(data)

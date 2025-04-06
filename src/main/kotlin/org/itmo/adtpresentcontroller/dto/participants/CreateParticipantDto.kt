@@ -6,4 +6,5 @@ data class CreateParticipantDto(
     val age: String,
     val presence: Boolean,
     val eventId: Long,
+    val count: Long?,
 )

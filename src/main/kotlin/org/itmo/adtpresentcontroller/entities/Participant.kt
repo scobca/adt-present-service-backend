@@ -31,4 +31,7 @@ class Participant {
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
     var event: Events? = null
+
+    @Column(nullable = true)
+    var count: Long? = null
 }

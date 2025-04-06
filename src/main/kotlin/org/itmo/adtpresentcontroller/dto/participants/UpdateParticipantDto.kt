@@ -5,5 +5,6 @@ data class UpdateParticipantDto(
     val name: String?,
     val competence: String?,
     val age: String?,
-    val presence: Boolean?
+    val presence: Boolean?,
+    val count: Long?,
 )
