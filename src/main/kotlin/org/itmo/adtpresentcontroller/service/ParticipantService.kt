@@ -7,9 +7,7 @@ import org.itmo.adtpresentcontroller.entities.Participant
 import org.itmo.adtpresentcontroller.mapper.ParticipantMapper
 import org.itmo.adtpresentcontroller.repositories.EventsRepository
 import org.itmo.adtpresentcontroller.repositories.ParticipantRepository
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
-import org.springframework.messaging.simp.SimpMessagingTemplate
 import org.springframework.stereotype.Service
 
 @Service
@@ -18,9 +16,6 @@ class ParticipantService(
     private val eventsRepo: EventsRepository,
     @Qualifier("participantMapperImpl") private val mapper: ParticipantMapper,
 ) {
-//    @Autowired
-//    private lateinit var messagingTemplate: SimpMessagingTemplate
-
     fun getAll(): List<Participant> = participantRepo.findAll()
     fun findById(id: Long): Participant = participantRepo.findById(id).orElse(null)
 
@@ -43,7 +38,5 @@ class ParticipantService(
         data.competence?.let { participant::competence.set(it) }
         data.presence?.let { participant::presence.set(it) }
         data.count?.let { participant::count.set(it) }
-
-//        messagingTemplate.convertAndSend("/topic/searchResults", "updated")
     }
 }
